@@ -75,9 +75,21 @@ class DatabaseSeeder extends Seeder
             'type_id' => 2,
         ]);
         Course::factory()->create([
-            'name' => 'React Native hooks',
-            'level' => 'professional',
-            'c_route' => '.react_native_hooks',
+            'name' => 'Java basics',
+            'level' => 'begginer',
+            'c_route' => '.java',
+            'type_id' => 3,
+        ]);
+        Course::factory()->create([
+            'name' => 'Phython basics',
+            'level' => 'begginer',
+            'c_route' => '.phython',
+            'type_id' => 3,
+        ]);
+        Course::factory()->create([
+            'name' => 'Javascript zero to hero',
+            'level' => 'advanced',
+            'c_route' => '.javascript_zero_to_hero',
             'type_id' => 3,
         ]);
         ProgLang::factory()->create([
