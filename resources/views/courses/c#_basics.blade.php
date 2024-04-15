@@ -1,24 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="intro-section" id="firstpage">
-        <h2>1. Bevezetés a C#-ba</h2>
-        <p>A C# (ejtsd: C-sharp) egy modern, objektumorientált programozási nyelv, amelyet a Microsoft fejlesztett ki. A C#
-            nyelvet általában a .NET keretrendszeren belül használják, és sokféle alkalmazási területen alkalmazzák, mint
-            például asztali, webes és mobil alkalmazások, játékok és adatbázis-kezelés.</p>
-        <p>Az alábbiakban röviden bemutatjuk a C# alapvető jellemzőit:</p>
-        <ul>
-            <li>Erős típusosság: A C# erősen típusos nyelv, ami azt jelenti, hogy a változók típusát deklarálni kell, és
-                azokat csak a deklarált típusú értékekkel lehet inicializálni.</li>
-            <li>Objektumorientált: A C# objektumorientált nyelv, ami azt jelenti, hogy az alkalmazásokat osztályok és
-                objektumok segítségével építjük fel.</li>
-            <li>Platformfüggetlen: A C# programokat a .NET keretrendszerrel való kompatibilitásnak köszönhetően különböző
-                platformokon futtathatjuk, beleértve a Windows-t, a macOS-t és a Linux-ot.</li>
-        </ul>
-        <p>Íme egy egyszerű példa arra, hogyan lehet kiírni egy üzenetet a konzolra C# nyelven:</p>
-        <div class="example">
-            <p><strong>Példa:</strong></p>
-            <pre><code>using System;
+    <div id="firstpage">
+
+        <div class="intro-section">
+            <h2>1. Bevezetés a C#-ba</h2>
+            <p>A C# (ejtsd: C-sharp) egy modern, objektumorientált programozási nyelv, amelyet a Microsoft fejlesztett ki. A
+                C#
+                nyelvet általában a .NET keretrendszeren belül használják, és sokféle alkalmazási területen alkalmazzák,
+                mint
+                például asztali, webes és mobil alkalmazások, játékok és adatbázis-kezelés.</p>
+            <p>Az alábbiakban röviden bemutatjuk a C# alapvető jellemzőit:</p>
+            <ul>
+                <li>Erős típusosság: A C# erősen típusos nyelv, ami azt jelenti, hogy a változók típusát deklarálni kell, és
+                    azokat csak a deklarált típusú értékekkel lehet inicializálni.</li>
+                <li>Objektumorientált: A C# objektumorientált nyelv, ami azt jelenti, hogy az alkalmazásokat osztályok és
+                    objektumok segítségével építjük fel.</li>
+                <li>Platformfüggetlen: A C# programokat a .NET keretrendszerrel való kompatibilitásnak köszönhetően
+                    különböző
+                    platformokon futtathatjuk, beleértve a Windows-t, a macOS-t és a Linux-ot.</li>
+            </ul>
+            <p>Íme egy egyszerű példa arra, hogyan lehet kiírni egy üzenetet a konzolra C# nyelven:</p>
+            <div class="example">
+                <p><strong>Példa:</strong></p>
+                <pre><code>using System;
 
 class Program
 {
@@ -27,46 +32,48 @@ static void Main(string[] args)
 Console.WriteLine("Hello, World!");
 }
 }</code></pre>
-        </div>
-        <p>A fenti példában láthatjuk, hogy először meg kell adnunk a <code>using System;</code> utasítást, hogy
-            használhassuk a <code>Console</code> osztályt, majd a <code>Main</code> metódusban a
-            <code>Console.WriteLine</code> függvény segítségével írjuk ki a "Hello, World!" üzenetet a konzolra.
-        </p>
+            </div>
+            <p>A fenti példában láthatjuk, hogy először meg kell adnunk a <code>using System;</code> utasítást, hogy
+                használhassuk a <code>Console</code> osztályt, majd a <code>Main</code> metódusban a
+                <code>Console.WriteLine</code> függvény segítségével írjuk ki a "Hello, World!" üzenetet a konzolra.
+            </p>
 
-    </div>
-    <div class="intro-section">
-        <h2>2. Környezet beállítása</h2>
-        <p>A C# fejlesztéshez először telepítened kell egy C# fejlesztőkörnyezetet. A Visual Studio az egyik legnépszerűbb
-            és legteljesebb fejlesztőkörnyezet a C# fejlesztéshez.</p>
-        <p>A Visual Studio letölthető a Microsoft hivatalos weboldaláról, és telepítése után könnyen készíthetsz új C#
-            projektet, és írhatod meg az első C# programjaidat.</p>
-        <p>Ha még nincs telepítve a Visual Studio, kérj segítséget az installation.html oldalunkon található telepítési
-            útmutatóból.</p>
-        <h2>3. Alapvető szintaxis</h2>
-        <p>A C# nyelvnek számos alapvető szintaxisa van, amelyeket meg kell érteni a hatékony programozás érdekében. Ezek
-            közé tartoznak a változók, az elágazások, a ciklusok és a függvények.</p>
-        <p>Példák a C# alapvető szintaxisára:</p>
-        <ul>
-            <li>Változók deklarálása és inicializálása: <code>int number = 10;</code></li>
-            <li>Elágazások (if, else if, else): <code>if (condition)
-                    {
-                    // Code block
-                    }
-                    else
-                    {
-                    // Code block
-                    }</code></li>
-            <li>Ciklusok (for, while, do-while): <code>for (int i = 0; i &lt; 5; i++)
-                    {
-                    // Code block
-                    }</code></li>
-            <li>Függvények és metódusok: <code>void MyMethod()
-                    {
-                    // Code block
-                    }</code></li>
-        </ul>
-        <p>Érdemes alaposan megismerni ezeket a szintaxisokat, mivel ezek az alapok a C# programozásához.</p>
-    </div>
+        </div>
+        <div class="intro-section">
+            <h2>2. Környezet beállítása</h2>
+            <p>A C# fejlesztéshez először telepítened kell egy C# fejlesztőkörnyezetet. A Visual Studio az egyik
+                legnépszerűbb
+                és legteljesebb fejlesztőkörnyezet a C# fejlesztéshez.</p>
+            <p>A Visual Studio letölthető a Microsoft hivatalos weboldaláról, és telepítése után könnyen készíthetsz új C#
+                projektet, és írhatod meg az első C# programjaidat.</p>
+            <p>Ha még nincs telepítve a Visual Studio, kérj segítséget az installation.html oldalunkon található telepítési
+                útmutatóból.</p>
+            <h2>3. Alapvető szintaxis</h2>
+            <p>A C# nyelvnek számos alapvető szintaxisa van, amelyeket meg kell érteni a hatékony programozás érdekében.
+                Ezek
+                közé tartoznak a változók, az elágazások, a ciklusok és a függvények.</p>
+            <p>Példák a C# alapvető szintaxisára:</p>
+            <ul>
+                <li>Változók deklarálása és inicializálása: <code>int number = 10;</code></li>
+                <li>Elágazások (if, else if, else): <code>if (condition)
+                        {
+                        // Code block
+                        }
+                        else
+                        {
+                        // Code block
+                        }</code></li>
+                <li>Ciklusok (for, while, do-while): <code>for (int i = 0; i &lt; 5; i++)
+                        {
+                        // Code block
+                        }</code></li>
+                <li>Függvények és metódusok: <code>void MyMethod()
+                        {
+                        // Code block
+                        }</code></li>
+            </ul>
+            <p>Érdemes alaposan megismerni ezeket a szintaxisokat, mivel ezek az alapok a C# programozásához.</p>
+        </div>
     </div>
     {{-- 1.page end --}}
     <div id="secondpage" class="d-none">
@@ -120,7 +127,6 @@ person1.Age = 30;</code></pre>
             </div>
         </div>
     </div>
-    </div>
     {{-- 2.page end --}}
     <div id="thirdpage" class="d-none">
         <div class="intro-section">
@@ -162,7 +168,6 @@ person1.Age = 30;</code></pre>
 }</code></pre>
             </div>
         </div>
-    </div>
     </div>
 
     {{-- 3.page end --}}
@@ -291,10 +296,9 @@ person1.Age = 30;</code></pre>
     </div>
     </div>
     </div>
- <button id="nextbutton" type="button" onclick="nextpage()" class="next-page-button"
-        onclick="window.location.href='page2.html'">Következő oldal</button>
+    <button id="nextbutton" type="button" onclick="nextpage()" class="next-page-button">Következő oldal</button>
 
-   
+
 
 
 
@@ -374,6 +378,7 @@ person1.Age = 30;</code></pre>
         if (ulr.includes("question")) {
 
             nextbutton.classList.add("d-none");
+            page1.classList.add("d-none");
             /* visszajelzés  jquery hasznalata javascript helyett*/
 
 
@@ -550,9 +555,7 @@ person1.Age = 30;</code></pre>
             padding: 20px;
         }
 
-        .intro-section {
-            width: 45%;
-        }
+        
 
         .intro-section h2 {
             color: #B22222;

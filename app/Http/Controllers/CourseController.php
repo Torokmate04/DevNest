@@ -6,6 +6,8 @@ use App\Models\Course;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Models\Types;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CourseController extends Controller
 {
@@ -48,6 +50,15 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
+        $user = Auth::user();
+        $user_course = DB::table('user_course')->where('user_id', $user->id and 'course_id', $course->id)->get();
+        
+        // if($user_course === null){
+        //    DB::table('user_course')->insert(['user_id' => $user->id, 'course_id' => $course->id, 'status' => '1']);
+        // }
+        // else{
+        //     echo ("<script>alert('hello')</script>");
+        // }
         return view('courses'.$course->c_route, ['course' => $course]);
 
     }

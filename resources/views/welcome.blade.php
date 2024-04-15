@@ -26,25 +26,14 @@
             </div>
         </div>
         <div class="row">
-            <div class="col text-end">
+            <div class="col text-center">
                 @if (Route::has('login'))
                     <a class="nav-link" href="{{ route('login') }}">
-                <button
-                type="button"
-                class="btn btn-outline-primary"
-                
-            >
-                Bejelentkezés
-            </button>
-            </a>
-            @endif
-            </div>
-            <div class="col text-start"><button
-                type="button"
-                class="btn btn-outline-warning"
-            >
-                Google
-            </button>
+                        <button type="button" class="btn btn-outline-primary">
+                            Bejelentkezés
+                        </button>
+                    </a>
+                @endif
             </div>
         </div>
         <div id="rolunk" class="row">
