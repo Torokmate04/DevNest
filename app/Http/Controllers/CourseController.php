@@ -51,15 +51,28 @@ class CourseController extends Controller
     public function show(Course $course)
     {
         $user = Auth::user();
-        $user_course = DB::table('user_course')->where('user_id', $user->id and 'course_id', $course->id)->get();
+        $user_course = DB::table('course_user')->where('user_id', $user->id)->where('course_id', $course->id)->exists();
+        $adatok = DB::table('course_user')->where('user_id', $user->id)->where('course_id', $course->id)->get();
+        if(!$user_course){
+            DB::table('course_user')->insert(['user_id' => $user->id, 'course_id' => $course->id, 'seen' => 1, 'completed' => 0, 'created_at' => date("Y-m-d H:i:s"), 'updated_at' => date("Y-m-d H:i:s")]);
+        } else {
+            // Do something if the user is already enrolled in the course (e.g., redirect or set a message)
+            //ide kéne valami lehet toast plusz ugorjon arra a reszre ahol tartott
+            if ($adatok[0]->completed == 0){
+
+            }
+            else if($adatok[0]->completed == 1){
+
+            }
+            else{
+
+            }
+            
+            
+        }
         
-        // if($user_course === null){
-        //    DB::table('user_course')->insert(['user_id' => $user->id, 'course_id' => $course->id, 'status' => '1']);
-        // }
-        // else{
-        //     echo ("<script>alert('hello')</script>");
-        // }
         return view('courses'.$course->c_route, ['course' => $course]);
+        
 
     }
 

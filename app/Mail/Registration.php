@@ -38,8 +38,8 @@ class Registration extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
-            text: 'You have registered successfully! Welcome in the DevNest Learning System.',
+            view: 'mail/registration',
+          
         );
     }
 
