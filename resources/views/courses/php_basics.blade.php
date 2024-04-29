@@ -266,7 +266,7 @@
                 <input type="hidden" name="question4answer" value=".">
             </div>
             <div id="submit" class="mb-3 text-center">
-                <button id="submitbutton" type="submit" style="background-color:#800404"
+                <button id="submitbutton" type="submit" style="background-color:#c7a26d; border-color:#c7a26d"
                     class="btn btn-danger w-75">Submit</button>
             </div>
         </form>
@@ -325,7 +325,7 @@
                 <a class="link-danger fw-bold fs-4 float-start link-opacity-75-hover" href="./5">El
                     olvasom ujra</a>
                 <a id="tovabb" class="link-success fw-bold fs-4 float-end link-opacity-75-hover"
-                    href="#tovaboldal">Menyunk
+                    href="./9">Menyunk
                     tovabb -></a>
             </div>
         </div>
@@ -537,7 +537,7 @@
         }
 
         .example {
-            background-color: rgba(79, 4, 4, 0.8);
+            background-color: #7d6139;
             color: #FFF;
             padding: 10px;
             border-radius: 5px;
@@ -549,9 +549,9 @@
         }
 
         .next-page-button {
-            background-color: #3f0808;
+            background-color: #7d6139;
             color: #FFF;
-            border: none;
+            border: none;w
             padding: 10px 20px;
             cursor: pointer;
             font-size: 16px;
@@ -560,7 +560,7 @@
         }
 
         .next-page-button:hover {
-            background-color: #800000;
+            background-color: #c7a26d;
         }
     </style>
 @endsection

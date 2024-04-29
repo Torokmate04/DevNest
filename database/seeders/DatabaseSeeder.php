@@ -93,6 +93,18 @@ class DatabaseSeeder extends Seeder
             'c_route' => '.javascript_zero_to_hero',
             'type_id' => 3,
         ]);
+        Course::factory()->create([
+            'name' => 'PHP intermediate',
+            'level' => 'intermediate',
+            'c_route' => '.php_intermediate',
+            'type_id' => 1,
+        ]);
+        Course::factory()->create([
+            'name' => 'PHP advanced',
+            'level' => 'advanced',
+            'c_route' => '.php_advanced',
+            'type_id' => 1,
+        ]);
         ProgLang::factory()->create([
             'name' => 'python',
             'description' => 'python leiras',

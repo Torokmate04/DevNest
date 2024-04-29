@@ -40,6 +40,14 @@ Route::get('/calendar', function(){
 
 Route::resource('/courses', CourseController::class);
 
+Route::get('/create_course_data' , function(){
+    return view('courses/create_course_data');
+})->name('/create_course_data');
+
+Route::get('/create_course_questions' , function(){
+    return view('courses/create_course_questions');
+})->name('/create_course_questions');
+
 /*
 |--------------------------------------------------------------------------
 | School Routes

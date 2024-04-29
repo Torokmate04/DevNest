@@ -42,7 +42,7 @@ class CourseController extends Controller
 
         ]);
         $course->save();
-        return back()->with('message', 'Course added. Thank you for your input.');
+        return redirect()->route('courses.create_course_data')->with('message', 'Course added. Thank you for your input.');
     }
 
     /**
