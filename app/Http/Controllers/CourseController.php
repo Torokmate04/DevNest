@@ -53,26 +53,34 @@ class CourseController extends Controller
         
         $user = Auth::user();
         $user_course = DB::table('course_user')->where('user_id', $user->id)->where('course_id', $course->id)->exists();
-        $adatok = DB::table('course_user')->where('user_id', $user->id)->where('course_id', $course->id)->get();
-        if(!$user_course){
-            DB::table('course_user')->insert(['user_id' => $user->id, 'course_id' => $course->id, 'seen' => 1, 'completed' => 0, 'created_at' => date("Y-m-d H:i:s"), 'updated_at' => date("Y-m-d H:i:s")]);
-        } else {
+       
+        if ($course->level == "begginer"){
+
+            if(!$user_course){
+                DB::table('course_user')->insert(['user_id' => $user->id, 'course_id' => $course->id, 'seen' => 1, 'completed' => 0, 'created_at' => date("Y-m-d H:i:s"), 'updated_at' => date("Y-m-d H:i:s")]);
+            }  return view('courses'.$course->c_route, ['course' => $course]);
+        }
+        else {
+            
+            
             // Do something if the user is already enrolled in the course (e.g., redirect or set a message)
             //ide kéne valami lehet toast plusz ugorjon arra a reszre ahol tartott
-            if ($adatok[0]->completed == 0){
-
+            if ($course->level == "intermediate"){
+                
+                return view('courses'.$course->c_route, ['course' => $course]);
             }
-            else if($adatok[0]->completed == 1){
-
+            else if($course->level == "advanced"){
+               
+                return view('courses'.$course->c_route, ['course' => $course]);
             }
-            else{
-
+            else if($course->completed == 3){
+                return back()->with('message', 'you have done this course already');
             }
-            
+           
             
         }
         
-        return view('courses'.$course->c_route, ['course' => $course]);
+       
         
 
     }

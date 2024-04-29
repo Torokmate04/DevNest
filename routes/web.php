@@ -4,6 +4,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ProgLangController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\UsersController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,7 +29,8 @@ Route::get('/docs' , function(){
     return view('docs');
 })->name('docs');
 Route::get('/calendar', function(){
-    return view('calendar/index');
+    $calendardata = DB::table('calendar')->get();
+    return view('calendar/index', ["calendardata" => $calendardata]);
 })->name('calendar');
 
 
@@ -77,4 +79,17 @@ Route::get('/language/{name}', function($name) {
 
 
 
-// 
+// calendar
+Route::post('calendar_store_data', function ($data){
+    DB::table('calendar')->insert([
+        'title' => $data->title,
+        'start' => $data->start,
+        'end' => $data->end,
+        'backgroundcolor' => $data->backgroundcolor
+    ]);
+    return back()->with('message', 'success');
+});
+
+
+
+Route::resource('/progLang', ProgLangController::class);

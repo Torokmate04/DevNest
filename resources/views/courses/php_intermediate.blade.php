@@ -310,19 +310,9 @@
         {{ count($_GET) / 2 }} / </p>
     <div class="row">
         <div class="col">
-            <p id="visszajelzoszoveg" class="fs-3 text-warning text-center mt-5">A következő tananyag úgy
-                épült fel hogy az
-                előzőleg
-                tanultakat már
-                tudja a
-                tanúló. Szeretnel
-                tovább menni a tananyagba vagy inkabb el olvasod újra?</p>
-            <a class="link-danger fw-bold fs-4 float-start link-opacity-75-hover" href="./5">El
-                olvasom ujra</a>
-            <a id="tovabb" class="link-success fw-bold fs-4 float-end link-opacity-75-hover"
-                href="./10">Menyunk
-                tovabb -></a>
+            <div id="utolsovisszajelzes" class="d-none"> </div>
         </div>
+    </div>
     </div>
     @endif
     <script>
@@ -357,11 +347,16 @@
                 }
             }
             document.getElementById("osszegzes").innerHTML += helyes;
-            if (helyes == 0) {
-                document.getElementById("tovabb").classList.add("d-none");
-                document.getElementById("visszajelzoszoveg").innerHTML =
-                    "Sájnáljuk de nem sikerült megtanulnod az alapokat kérlek figyelmesen olvasd át mégegyszer és érj el legalább 50% eredményt!";
-
+            if (helyes <= 2) {
+                document.getElementById("utolsovisszajelzes").classList.remove("d-none");
+                document.getElementById("utolsovisszajelzes").innerHTML =
+                    "<h4 class='text-danger'>Sájnáljuk de nem sikerült megtanulnod az alapokat kérlek figyelmesen olvasd át mégegyszer és érj el legalább 50% eredményt!<a href='./9' class='text-decoration-underline text-danger '>Probald ujra!</a></h4>";
+            }
+            else{
+                document.getElementById("utolsovisszajelzes").classList.remove("d-none");
+                document.getElementById("utolsovisszajelzes").innerHTML =
+                "<h3 class='text-success'>Gratulálunk sikeresen teljesitetted a php intermediate levelt!<a href='./10' class='text-decoration-underline text-success '>Irány a következő oldal!</a></h3>";
+            
             }
 
         } else {

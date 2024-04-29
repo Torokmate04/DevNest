@@ -61,7 +61,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <input id="tematart" name="tematart" type="hidden" name="content">
-                                        <trix-editor input="x"></trix-editor>
+                                        <trix-editor class="text-white" input="x"></trix-editor>
                                         @error('name')
                                             <small class="text-danger">*{{ $message }}</small>
                                         @enderror
@@ -97,4 +97,11 @@
             event.preventDefault();
         });
     </script>
+    <style>
+        .card{
+            background-color: #7d6139;
+            color: #c7a26d;
+        }
+        
+    </style>
 @endsection

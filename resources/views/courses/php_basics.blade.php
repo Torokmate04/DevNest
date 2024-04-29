@@ -315,19 +315,9 @@
             {{ count($_GET) / 2 }} / </p>
         <div class="row">
             <div class="col">
-                <p id="visszajelzoszoveg" class="fs-3 text-warning text-center mt-5">A következő tananyag úgy
-                    épült fel hogy az
-                    előzőleg
-                    tanultakat már
-                    tudja a
-                    tanúló. Szeretnel
-                    tovább menni a tananyagba vagy inkabb el olvasod újra?</p>
-                <a class="link-danger fw-bold fs-4 float-start link-opacity-75-hover" href="./5">El
-                    olvasom ujra</a>
-                <a id="tovabb" class="link-success fw-bold fs-4 float-end link-opacity-75-hover"
-                    href="./9">Menyunk
-                    tovabb -></a>
+                <div id="utolsovisszajelzes" class="d-none"> </div>
             </div>
+        </div>
         </div>
     @endif
     </div>
@@ -364,10 +354,36 @@
                 }
             }
             document.getElementById("osszegzes").innerHTML += helyes;
-            if (helyes == 0) {
-                document.getElementById("tovabb").classList.add("d-none");
-                document.getElementById("visszajelzoszoveg").innerHTML =
-                    "Sájnáljuk de nem sikerült megtanulnod az alapokat kérlek figyelmesen olvasd át mégegyszer és érj el legalább 50% eredményt!";
+            
+            var today = new Date().toISOString().slice(0, 10).replace('T', ' ');
+           
+            if (helyes <= 2) {
+                var data = {
+                    "title": "php basic",
+                    "start": today,
+                    "end": today,
+                    "backgroundcolor": "yellow"
+                }
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'calendar_store_data');
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        console.log('Data inserted successfully');
+                    } else {
+                        console.error('Error inserting data');
+                    }
+                };
+                xhr.send(JSON.stringify(data));
+                document.getElementById("utolsovisszajelzes").classList.remove("d-none");
+                document.getElementById("utolsovisszajelzes").innerHTML =
+                    "<h4 class='text-danger'>Sájnáljuk de nem sikerült megtanulnod az alapokat kérlek figyelmesen olvasd át mégegyszer és érj el legalább 50% eredményt!<a href='./5' class='text-decoration-underline text-danger '>Probald ujra!</a></h4>";
+            } else {
+
+
+                document.getElementById("utolsovisszajelzes").classList.remove("d-none");
+                document.getElementById("utolsovisszajelzes").innerHTML =
+                    "<h3 class='text-success'>Gratulálunk sikeresen teljesitetted a php basic levelt!<a href='./9' class='text-decoration-underline text-success '>Irány a következő oldal!</a></h3>";
 
             }
 
@@ -523,7 +539,7 @@
             padding: 20px;
         }
 
-        
+
 
         .intro-section h2 {
             color: #c7a26d;
@@ -551,8 +567,8 @@
         .next-page-button {
             background-color: #7d6139;
             color: #FFF;
-            border: none;w
-            padding: 10px 20px;
+            border: none;
+            w padding: 10px 20px;
             cursor: pointer;
             font-size: 16px;
             border-radius: 5px;
