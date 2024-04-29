@@ -1,22 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-    <style>
-        .jumbotron {
-            background-color: #FF0000;
-            color: #000;
-        }
+<style>
+    .jumbotron {
+        background-color: #7d6139;
+        color: #ffffff;
+    }
 
-        .btn-custom {
-            background-color: #FF0000;
-            border-color: #FF0000;
-        }
+    .btn-custom {
+        background-color: #7d6139;
+        border-color: #7d6139;
+    }
 
-        .btn-custom:hover {
-            background-color: #DC143C;
-            border-color: #DC143C;
-        }
-    </style>
+    .btn-custom:hover {
+        background-color: #c7a26d;
+        border-color: #7d6139;
+    }
+</style>
     <div class="container mt-5">
         <div class="jumbotron">
             <h1 class="display-4">Python Bemutatása</h1>

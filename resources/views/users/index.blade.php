@@ -3,9 +3,10 @@
         use App\Models\School;
     @endphp --}}
 @section('content')
-    <h1 class="text-white mb-5">All users </h1>
-    @if (Session::has('message'))
-        <script>
+@if (Auth::user()->role == 1)
+<h1 class="text-white mb-5">All users </h1>
+@if (Session::has('message'))
+<script>
             toastr.options = {
                 "closeButton": true,
                 "debug": false,
@@ -24,7 +25,7 @@
                 "hideMethod": "fadeOut"
             }
             toastr["success"]("{{ Session::get('message') }}", "Good job!")
-        </script>
+            </script>
     @endif
     <table id="example" class="stripe cell-border hover " style="width:100%">
         <thead>
@@ -33,21 +34,23 @@
                 <th>Fullname</th>
                 <th>Email</th>
                 <th>School</th>
+                <th>Role</th>
                 <th>Active</th>
                 <th>Actions</th>
-
+                
             </tr>
         </thead>
         <tbody>
             @foreach ($users as $item)
-                <tr>
-                    <td>{{ $item->username }}</td>
-                    <td>{{ $item->fullname }}</td>
-                    <td>{{ $item->email }}</td>
-                    <td>{{ $item->school->name }}</td>
-                    @if ($item->active == 1)
-                        <td class="bg-success text-center rounded-circle">active</td>
-                    @else
+            <tr>
+                <td>{{ $item->username }}</td>
+                <td>{{ $item->fullname }}</td>
+                <td>{{ $item->email }}</td>
+                <td>{{ $item->school->name }}</td>
+                <td>{{$item->role == 1 ? "képző" : "tanulo"}}</td>
+                @if ($item->active == 1)
+                <td class="bg-success text-center rounded-circle">active</td>
+                @else
                         <td class="bg-danger">inactive</td>
                     @endif
                     <td>
@@ -68,9 +71,11 @@
                     </td>
                 </tr>
             @endforeach
-
+            
         </tbody>
         <script>
             $('#example').DataTable();
         </script>
+    
+    @endif
     @endsection

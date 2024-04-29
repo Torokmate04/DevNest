@@ -43,6 +43,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
             'password' => 1234,
             'school_id' => 1,
+            "role" => 1,
             'active' => true,
         ]);
 

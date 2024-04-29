@@ -1,0 +1,1 @@
+{{-- itt meg olyan kerdes 4valsz  --}}

@@ -7,6 +7,7 @@ use App\Models\School;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
@@ -60,7 +61,9 @@ class UsersController extends Controller
     public function show(User $user)
     {
         $user = Auth::user();
-        return view('profile', ['user' => $user]);
+        $adatok = DB::table('course_user')->join('courses', 'course_id', '=', 'courses.id')->where('user_id', $user->id)->get();
+       
+        return view('profile', ['user' => $user, 'adatok' => $adatok]);
 
     }
 }

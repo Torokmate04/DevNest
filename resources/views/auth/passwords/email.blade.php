@@ -3,11 +3,10 @@
 @section('before-content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+        <div class="col-md-8 kozepre">
+        
 
-                <div class="card-body">
+               
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -40,8 +39,57 @@
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
+            
     </div>
 </div>
+
+<style>
+    /* Adjustments for Bootstrap compatibility */
+   
+
+   
+    .kozepre{
+        margin-top: 20%;
+    }
+  
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        border-radius: 5px;
+        color: white;
+    }
+
+    .btn-primary {
+        width: 100%;
+        
+        padding: 10px;
+        background-color: #c7a26d;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #916e3c;
+    }
+
+    .btn-link {
+        color: #00000051;
+        text-decoration: none;
+        margin-top: 10px;
+        display: block;
+    }
+
+    .btn-link:hover {
+        color: #fff;
+        transition: all 400ms ease-in;
+        transform: scale(2);
+    }
+</style>
 @endsection

@@ -28,8 +28,8 @@
 
     {{-- Toaster --}}
     <script src="
-                                                                                https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.js
-                                                                                "></script>
+                                                                                    https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.js
+                                                                                    "></script>
     <link href="
 https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css
 " rel="stylesheet">
@@ -61,23 +61,27 @@ https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css
 
 
                             <div class="d-flex gap-4 fs-5">
-                                {{-- Admin linkek --}}
-                                {{-- <a class="navbar-item text-light" href="{{ route('courses.index') }}">Courses</a>
-                                <a class="navbar-item text-light" href="{{ route('courses.create') }}">Create
-                                    course</a>
+                                @if (Auth::user()->role == 1)
+                                    {{-- Admin linkek --}}
+                                    <a class="navbar-item text-light" href="{{ route('courses.create') }}">Create
+                                        course</a>
+                                    <a class="navbar-item text-light" href="{{ route('courses.index') }}">Courses</a>
 
-                                <a class="navbar-item text-light" href="{{ route('schools.index') }}">Schools</a>
-                                <a class="navbar-item text-light" href="{{ route('schools.create') }}">Create
-                                    school</a>
-                                <a class="navbar-item text-light" href="{{ route('users') }}">Users</a> --}}
+                                    <a class="navbar-item text-light" href="{{ route('schools.index') }}">Schools</a>
+                                    <a class="navbar-item text-light" href="{{ route('schools.create') }}">Create
+                                        school</a>
+                                    <a class="navbar-item text-light" href="{{ route('users') }}">Users</a>
+                                @else
+                                    {{-- User linkek --}}
+                                    <a href="{{ route('profile') }}">Profile</a>
+                                    <a href="{{ route('progLang.index') }}">Learn</a>
+                                    <a href="{{ route('docs') }}">Docs</a>
+                                    <a href="{{ route('calendar') }}">Calendar</a>
+                                @endif
+                                    
+                               
 
-                                {{-- User linkek --}}
-
-
-                                <a href="{{ route('profile') }}">Profile</a>
-                                <a href="{{ route('progLang.index') }}">Learn</a>
-                                <a href="{{ route('docs') }}">Docs</a>
-                                <a href="{{ route('calendar') }}">Calendar</a>
+                                
 
 
 

@@ -432,7 +432,7 @@
 
 
         .answer-wrapper {
-            background-color: rgba(123, 7, 7, 0.896);
+            background-color: #7d6139;
             padding: 10px;
             border-radius: 10px;
             margin-bottom: 10px;
@@ -471,7 +471,7 @@
 
         /* CSS */
         .button-71 {
-            background-color: #800404;
+            background-color: #7d6139;
             border: 0;
             border-radius: 56px;
             color: #fff;
@@ -526,8 +526,8 @@
         
 
         .intro-section h2 {
-            color: #B22222;
-            border-bottom: 2px solid #B22222;
+            color: #c7a26d;
+            border-bottom: 2px solid #c7a26d;
             padding-bottom: 10px;
         }
 

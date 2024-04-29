@@ -3,18 +3,18 @@
 @section('content')
     <style>
         .jumbotron {
-            background-color: #FF0000;
-            color: #000;
+            background-color: #7d6139;
+            color: #ffffff;
         }
 
         .btn-custom {
-            background-color: #FF0000;
-            border-color: #FF0000;
+            background-color: #7d6139;
+            border-color: #7d6139;
         }
 
         .btn-custom:hover {
-            background-color: #DC143C;
-            border-color: #DC143C;
+            background-color: #c7a26d;
+            border-color: #7d6139;
         }
     </style>
     <div class="container mt-5">

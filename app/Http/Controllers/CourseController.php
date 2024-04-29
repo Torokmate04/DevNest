@@ -50,6 +50,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
+        
         $user = Auth::user();
         $user_course = DB::table('course_user')->where('user_id', $user->id)->where('course_id', $course->id)->exists();
         $adatok = DB::table('course_user')->where('user_id', $user->id)->where('course_id', $course->id)->get();

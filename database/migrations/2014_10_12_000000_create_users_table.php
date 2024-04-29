@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->foreignId('school_id');
             $table->boolean('active')->default(true);
+            $table->tinyInteger("role")->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

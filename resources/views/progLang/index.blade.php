@@ -1,29 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="heading">
-        <h1 class="heading__title">Kurzusaink</h1>
-        <p class="heading__credits">Ezek közül tudsz választani:</p>
+<div class="heading">
+    <h1 class="heading__title">Kurzusaink</h1>
+    <p class="heading__credits">Ezek közül tudsz választani:</p>
+</div>
+<div class="cards">
+    <div class="card card-1">
+        <div class="card__icon"><i class="fas fa-bolt"></i></div>
+        <p class="card__exit"><i class="fas fa-times"></i></p>
+        <h2 class="card__title">C# - Objektumorientált programozási nyelv</h2>
+        <p class="card__apply">
+            <a class="card__link" href="../courses/5">Indítás<i class="fas fa-arrow-right"></i></a>
+        </p>
     </div>
-    <div class="cards">
-        <div class="card card-1">
-            <div class="card__icon"><i class="fas fa-bolt"></i></div>
-            <p class="card__exit"><i class="fas fa-times"></i></p>
-            <h2 class="card__title">C# - Objektumorientált programozási nyelv</h2>
-            <p class="card__apply">
-                <a class="card__link" href="../courses/5">Indítás<i class="fas fa-arrow-right"></i></a>
-            </p>
-        </div>
-        <div class="card card-2">
-            <div class="card__icon"><i class="fas fa-bolt"></i></div>
-            <p class="card__exit"><i class="fas fa-times"></i></p>
-            <h2 class="card__title">PHP - Webes alkalmazásokhoz használt szkriptnyelv.</h2>
-            <p class="card__apply">
-                <a class="card__link" href="../courses/4">Indítás<i class="fas fa-arrow-right"></i></a>
-            </p>
-        </div>
-        <div class="card card-3">
-            <div class="card__icon"><i class="fas fa-bolt"></i></div>
+    <div class="card card-2">
+        <div class="card__icon"><i class="fas fa-bolt"></i></div>
+        <p class="card__exit"><i class="fas fa-times"></i></p>
+        <h2 class="card__title">PHP - Webes alkalmazásokhoz használt szkriptnyelv.</h2>
+        <p class="card__apply">
+            <a class="card__link" href="../courses/4">Indítás<i class="fas fa-arrow-right"></i></a>
+        </p>
+    </div>
+    <div class="card card-3">
+        <div class="card__icon"><i class="fas fa-bolt"></i></div>
             <p class="card__exit"><i class="fas fa-times"></i></p>
             <h2 class="card__title">Javascript</h2>
             <p class="card__apply">
@@ -46,7 +46,7 @@
                 <a class="card__link" href="../courses/7">Indítás<i class="fas fa-arrow-right"></i></a>
             </p>
         </div>
-
+        
     </div>
     <style>
         * {
@@ -56,13 +56,13 @@
         }
 
         
-
+        
         .main-container {
             padding: 30px;
         }
 
         /* HEADING */
-
+        
         .heading {
             text-align: center;
         }
@@ -71,7 +71,7 @@
             font-weight: 600;
             color: white;
         }
-
+        
         .heading__credits {
             margin: 10px 0px;
             color: #564837;
@@ -82,13 +82,13 @@
         .heading__link {
             text-decoration: none;
         }
-
+        
         .heading__credits .heading__link {
             color: inherit;
         }
-
+        
         /* CARDS */
-
+        
         .cards {
             display: flex;
             flex-wrap: wrap;
