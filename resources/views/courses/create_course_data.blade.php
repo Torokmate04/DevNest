@@ -48,7 +48,7 @@
 
                         <div class="row">
                             <div class="col">
-                                <form action="{{ route('courses.store') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('courses.storeCourseData') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="mb-3">
                                         <label for="temacim" class="form-label">Tema cime*</label>
@@ -60,12 +60,11 @@
                                         @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <input id="tematart" name="tematart" type="hidden" name="content">
-                                        <trix-editor class="text-white" input="x"></trix-editor>
-                                        @error('name')
-                                            <small class="text-danger">*{{ $message }}</small>
-                                        @enderror
+                                        <input id="tematart" name="tematart" type="hidden" >
+                                        <trix-editor class="text-white" input="tematart"></trix-editor>
                                     </div>
+                                    
+                                    
 
 
                                     <div class="mb-3 text-center">

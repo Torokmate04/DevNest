@@ -6,57 +6,23 @@
     <p class="heading__credits">Ezek közül tudsz választani:</p>
 </div>
 <div class="cards">
-    <div class="card card-1">
+    @foreach ($courses as $item)
+    <div class="card card-{{($item->id + 1) % 4 == 1 || $item->id % 4 == 1  ? "egyikek": "masikok"}}">
         <div class="card__icon"><i class="fas fa-bolt"></i></div>
         <p class="card__exit"><i class="fas fa-times"></i></p>
-        <h2 class="card__title">C# - Objektumorientált programozási nyelv</h2>
+        <h2 class="card__title">{{$item->name}}</h2>
         <p class="card__apply">
-            <a class="card__link" href="../courses/5">Indítás<i class="fas fa-arrow-right"></i></a>
+            <a class="card__link" href="../courses/{{$item->id}}">Indítás<i class="fas fa-arrow-right"></i></a>
         </p>
     </div>
-    <div class="card card-2">
-        <div class="card__icon"><i class="fas fa-bolt"></i></div>
-        <p class="card__exit"><i class="fas fa-times"></i></p>
-        <h2 class="card__title">PHP - Webes alkalmazásokhoz használt szkriptnyelv.</h2>
-        <p class="card__apply">
-            <a class="card__link" href="../courses/4">Indítás<i class="fas fa-arrow-right"></i></a>
-        </p>
-    </div>
-    <div class="card card-3">
-        <div class="card__icon"><i class="fas fa-bolt"></i></div>
-            <p class="card__exit"><i class="fas fa-times"></i></p>
-            <h2 class="card__title">Javascript</h2>
-            <p class="card__apply">
-                <a class="card__link" href="../courses/8">Indítás<i class="fas fa-arrow-right"></i></a>
-            </p>
-        </div>
-        <div class="card card-4">
-            <div class="card__icon"><i class="fas fa-bolt"></i></div>
-            <p class="card__exit"><i class="fas fa-times"></i></p>
-            <h2 class="card__title">Java - Platformfüggetlen programozási nyelv.</h2>
-            <p class="card__apply">
-                <a class="card__link" href="../courses/6">Indítás<i class="fas fa-arrow-right"></i></a>
-            </p>
-        </div>
-        <div class="card card-5">
-            <div class="card__icon"><i class="fas fa-bolt"></i></div>
-            <p class="card__exit"><i class="fas fa-times"></i></p>
-            <h2 class="card__title">Python - Interpretált, magas szintű, általános célú nyelv.</h2>
-            <p class="card__apply">
-                <a class="card__link" href="../courses/7">Indítás<i class="fas fa-arrow-right"></i></a>
-            </p>
-        </div>
-        
+    @endforeach    
     </div>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        
-        
+        }        
         .main-container {
             padding: 30px;
         }
@@ -157,25 +123,13 @@
         }
 
         /* CARD BACKGROUNDS */
-
-        .card-1 {
+        
+        .card-egyikek  {
             background: radial-gradient(#b78d5c, #3d3122);
         }
 
-        .card-2 {
+        .card-masikok {
             background: radial-gradient(#e2c69b, #877651);
-        }
-
-        .card-3 {
-            background: radial-gradient(#e2c69b, #877651);
-        }
-
-        .card-4 {
-            background: radial-gradient(#b78d5c, #3d3122);
-        }
-
-        .card-5 {
-            background: radial-gradient(#b78d5c, #3d3122);
         }
 
 

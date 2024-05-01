@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCourseDataRequest;
+use App\Http\Requests\StoreCourseQuestionRequest;
 use App\Models\Course;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
@@ -42,14 +44,91 @@ class CourseController extends Controller
 
         ]);
         $course->save();
-        return redirect()->route('courses.create_course_data')->with('message', 'Course added. Thank you for your input.');
+        return redirect()->route('/create_course_data')->with('message', 'Course added. Thank you for your input.');
     }
+
+    public function storeCourseData(StoreCourseDataRequest $request)
+    {
+        $lastcourseid = DB::table("courses")->orderBy('id', 'desc')->first();
+        
+        
+        DB::table('course_data')->insert([
+            "course_id" => $lastcourseid->id,
+            "cim" => $request->temacim,
+            "tartalom" => $request->tematart
+        ]);
+        return redirect()->route('/create_course_questions')->with('message', 'Course data added. Thank you for your input.');
+    }
+
+    public function storeCourseQuestion(StoreCourseQuestionRequest $request)
+    {
+        $lastcourseid = DB::table("courses")->orderBy('id', 'desc')->first();
+        
+       
+       for($i = 0; $i < count($request->kerdes); $i++){
+
+           DB::table('course_quizzes')->insert([
+               "course_id" => $lastcourseid->id,
+               "kerdes" => $request->kerdes[$i],
+               "valaszok" => $request->valaszok[$i]
+           ]);
+       }
+        return redirect()->route('/create_course_questions')->with('message', 'Course questions added. Thank you for your input.');
+    }
+
+
 
     /**
      * Display the specified resource.
      */
     public function show(Course $course)
     {
+        if(isset($_GET['sikerult'])){
+
+            $sikerult = $_GET['sikerult'];
+            if($sikerult == "false"){
+                DB::table("calendar")->insert([
+                    "user_id" => Auth::user()->id,
+                    "title" => $course->name,
+                    "start" => date("Y-m-d"),
+                    "end" => date("Y-m-d"),
+                    "backgroundcolor" => "yellow"
+                ]);
+            }
+            else{
+                
+                if(isset($_GET["elozocourse"])){
+                    
+                    $elozocourzus = DB::table("courses")->where("id", $_GET['elozocourse'])->get();
+                    
+                   
+
+                    DB::table("calendar")->insert([
+                        "user_id" => Auth::user()->id,
+                        "title" => $elozocourzus[0]->name,
+                        "start" => date("Y-m-d"),
+                        "end" => date("Y-m-d"),
+                        "backgroundcolor" => "green"
+                    ]);
+                }
+                if(isset($_GET['level']) && isset($_GET['basecourseid'])){
+
+
+                    Db::table("course_user")->where("course_id", $_GET['basecourseid'])->where('user_id', Auth::user()->id)->update(["completed" => $_GET['level']]);
+                }
+               //if(strpos($course->name, "intermediate") !== false){
+               
+               
+               
+               
+            }
+        }
+        $croutearray = [".php_basics", ".c#_basics", ".java", ".phython", ".javascript_zero_to_hero", ".php_intermediate", ".php_advanced"];
+        $coursedata = DB::table("course_data")->where("course_id", $course->id)->get();
+        $coursequestions = DB::table("course_quizzes")->where("course_id", $course->id)->get();
+        if(!in_array($course->c_route, $croutearray)){
+            return(view("courses.show", ['course' => $course, "coursedata" => $coursedata, "coursequestions" => $coursequestions]));
+        }
         
         $user = Auth::user();
         $user_course = DB::table('course_user')->where('user_id', $user->id)->where('course_id', $course->id)->exists();
@@ -58,31 +137,21 @@ class CourseController extends Controller
 
             if(!$user_course){
                 DB::table('course_user')->insert(['user_id' => $user->id, 'course_id' => $course->id, 'seen' => 1, 'completed' => 0, 'created_at' => date("Y-m-d H:i:s"), 'updated_at' => date("Y-m-d H:i:s")]);
-            }  return view('courses'.$course->c_route, ['course' => $course]);
-        }
-        else {
-            
-            
-            // Do something if the user is already enrolled in the course (e.g., redirect or set a message)
-            //ide kéne valami lehet toast plusz ugorjon arra a reszre ahol tartott
-            if ($course->level == "intermediate"){
-                
-                return view('courses'.$course->c_route, ['course' => $course]);
+               $usercount = DB::table("prog_langs")->where("course_id", $course->id)->get();
+                DB::table("prog_langs")->where("course_id", $course->id)->update(["usercount" => ($usercount[0]->usercount + 1)]);
             }
-            else if($course->level == "advanced"){
-               
-                return view('courses'.$course->c_route, ['course' => $course]);
-            }
-            else if($course->completed == 3){
-                return back()->with('message', 'you have done this course already');
-            }
+            else{
+                $datasss = DB::table('course_user')->where('user_id', $user->id)->where('course_id', $course->id)->get();
+                switch ($datasss[0]->completed){
+                    case 0: return view('courses'.$course->c_route, ['course' => $course]);
+                    case 1: return view('courses/php_intermediate');
+                    case 2: return view('courses/php_advanced');
+                    case 3: return redirect('home')->with("message", 'Course already completed!');
+                }
+            } 
            
-            
         }
-        
-       
-        
-
+        return view('courses'.$course->c_route, ['course' => $course]); 
     }
 
     /**

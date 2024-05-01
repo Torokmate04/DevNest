@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ProgLang;
 use App\Http\Requests\StoreProgLangRequest;
 use App\Http\Requests\UpdateProgLangRequest;
+use App\Models\Course;
 
 class ProgLangController extends Controller
 {
@@ -13,8 +14,8 @@ class ProgLangController extends Controller
      */
     public function index()
     {
-        $proglang = ProgLang::all();
-        return view('proglang.index', ['language' => $proglang]);
+        $courses = Course::all();
+        return view('proglang.index', ['courses' => $courses]);
         
     }
 

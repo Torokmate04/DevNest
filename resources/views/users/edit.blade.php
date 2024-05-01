@@ -101,11 +101,23 @@
                                             
                                             <option selected value="0">Tanuló</option>
                                             @endif
-                                            
-                                           
-                                               
-                                            
+                                        </select>
 
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="active" class="form-label">Active</label>
+                                        <select name="active" id="active" class="form-control">
+
+                                            @if ($user->active == 1)
+                                            <option selected value="1">Active</option>
+                                            
+                                            <option value="0">Inactive</option>
+                                                
+                                            @else
+                                            <option  value="1">Active</option>
+                                            
+                                            <option selected value="0">Inactive</option>
+                                            @endif
                                         </select>
 
                                     </div>

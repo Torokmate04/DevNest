@@ -35,6 +35,11 @@
                 }
             </script>
         @endif
+        @if (Session::has('message'))
+        <script>
+            toastr["success"]("{{ Session::get('message') }}", "Good job!")
+        </script>
+        @endif
         {{-- <div class="row">
             
             <div class="col-8">

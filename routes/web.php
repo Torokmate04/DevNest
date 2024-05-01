@@ -4,6 +4,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ProgLangController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\UsersController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -29,7 +30,8 @@ Route::get('/docs' , function(){
     return view('docs');
 })->name('docs');
 Route::get('/calendar', function(){
-    $calendardata = DB::table('calendar')->get();
+    $userid = Auth::user()->id;
+    $calendardata = DB::table('calendar')->where("user_id", $userid)->get();
     return view('calendar/index', ["calendardata" => $calendardata]);
 })->name('calendar');
 
@@ -50,6 +52,10 @@ Route::get('/create_course_questions' , function(){
     return view('courses/create_course_questions');
 })->name('/create_course_questions');
 
+
+Route::post('courses.storeCourseData', [CourseController::class, "storeCourseData"])->name('courses.storeCourseData');
+
+Route::post('courses.storeCourseQuestion', [CourseController::class, "storeCourseQuestion"])->name('courses.storeCourseQuestion');
 /*
 |--------------------------------------------------------------------------
 | School Routes
@@ -79,17 +85,4 @@ Route::get('/language/{name}', function($name) {
 
 
 
-// calendar
-Route::post('calendar_store_data', function ($data){
-    DB::table('calendar')->insert([
-        'title' => $data->title,
-        'start' => $data->start,
-        'end' => $data->end,
-        'backgroundcolor' => $data->backgroundcolor
-    ]);
-    return back()->with('message', 'success');
-});
 
-
-
-Route::resource('/progLang', ProgLangController::class);

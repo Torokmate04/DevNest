@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('calendar', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("user_id");
             $table->string('title');
             $table->string("start");
             $table->string("end");
-            $table->string("backgroundcolor");
+            $table->string("backgroundColor");
             
             
         });

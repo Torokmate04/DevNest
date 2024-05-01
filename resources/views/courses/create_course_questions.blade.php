@@ -48,37 +48,30 @@
 
                         <div class="row">
                             <div class="col">
-                                <form action="{{ route('courses.store') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('courses.storeCourseQuestion') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div id="input-forms">
-                                        <form>
-                                            <label for="kerdes">Kérdés:</label><br>
-                                            <input class="form-control" type="text" id="kerdes" name="kerdes[]"><br>
-                                            <label for="valaszok">Lehetséges válaszok:</label><br>
-                                            <input class="form-control" type="text" id="valaszok" name="valaszok[]">
-                                        </form>
+                                        <label for="kerdes">Kérdés:</label><br>
+                                        <input class="form-control" type="text" id="kerdes" name="kerdes[]"><br>
+                                        <label for="valaszok">Lehetséges válaszok:</label><br>
+                                        <input class="form-control" type="text" id="valaszok" name="valaszok[]">
                                     </div>
+                                
+                                    <button type="button" onclick="addInputForm()">+</button>
                                     
-                                    <button  onclick="addInputForm()">+</button>
-                                    
-                                    <script>
-                                        function addInputForm() {
-                                            var div = document.getElementById("input-forms");
-                                            var form = document.createElement("form");
-                                            form.innerHTML = `
-                                                <label class="mt-3" for="kerdes">Kérdés:</label><br>
-                                                <input class="form-control" type="text" id="kerdes" name="kerdes[]"><br>
-                                                <label for="valaszok">Lehetséges válaszok:</label><br>
-                                                <input class="form-control" type="text" id="valaszok" name="valaszok[]">
-                                            `;
-                                            div.appendChild(form);
-                                        }
-                                    </script>
-
                                     <div class="mb-3 text-center">
                                         <button type="submit" class="btn btn-danger w-75">Create</button>
                                     </div>
                                 </form>
+                                
+                                <script>
+                                    function addInputForm() {
+                                        var div = document.getElementById("input-forms");
+                                        var cloneDiv = div.cloneNode(true); // Clone the div with its children
+                                        div.parentNode.appendChild(cloneDiv); // Append the cloned div to the parent of the original div
+                                    }
+                                </script>
+                                
                             </div>
                         </div>
                     </div>

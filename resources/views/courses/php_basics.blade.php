@@ -39,16 +39,16 @@
                 közé tartoznak a változók, az elágazások, a ciklusok és a függvények.</p>
             <p>Példák a PHP alapvető szintaxisára:</p>
             <ul>
-                <li>Változók deklarálása és inicializálása: <code>$number = 10;</code></li>
-                <li>Elágazások (if, else if, else): <code>if ($condition) {
+                <li>Változók deklarálása és inicializálása: <code class="sorcode">$number = 10;</code></li>
+                <li>Elágazások (if, else if, else): <code class="sorcode">if ($condition) {
                         // Kód blokk
                         } else {
                         // Kód blokk
                         }</code></li>
-                <li>Ciklusok (for, while, do-while): <code>for ($i = 0; $i &lt; 5; $i++) {
+                <li>Ciklusok (for, while, do-while):<code class="sorcode">for ($i = 0; $i &lt; 5; $i++) {
                         // Kód blokk
                         }</code></li>
-                <li>Függvények: <code>function myFunction() {
+                <li>Függvények: <code class="sorcode">function myFunction() {
                         // Kód blokk
                         }</code></li>
             </ul>
@@ -61,7 +61,7 @@
             <p>A változók az adatok tárolására szolgálnak a PHP-ban. A változókat dollárjellel kezdjük, és a nevet követően
                 értéket adhatunk neki.</p>
             <h3>Változók deklarálása és inicializálása</h3>
-            <div class="example">
+            <div class="example ">
                 <pre><code>$number = 10;
         $string = "Hello, World!";
         $isTrue = true;</code></pre>
@@ -267,55 +267,56 @@
             </div>
             <div id="submit" class="mb-3 text-center">
                 <button id="submitbutton" type="submit" style="background-color:#c7a26d; border-color:#c7a26d"
-                    class="btn btn-danger w-75">Submit</button>
+                    class="btn btn-danger w-75 button-71">Submit</button>
             </div>
         </form>
     </div>
     </div>
     <button id="nextbutton" type="button" onclick="nextpage()" class="next-page-button">Következő oldal</button>
     @if (isset($_GET['question1']))
-        <table id="responsetable" class="table table-dark text-white table-striped mt-5">
-            <thead>
-                <tr>
-                    <th class="w-50" scope="col">Kérdés:</th>
-                    <th scope="col">Ön válasza:</th>
-                    <th scope="col">Helyes válasz:</th>
-                    <th scope="col">Pontszám:</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Melyik kifejezés használható arra, hogy egy osztály metódusa hozzáférjen a privát adattagokhoz?
-                    </td>
-                    <td>{{ $_GET['question1'] }}</td>
-                    <td>{{ $_GET['question1answer'] }}</td>
-                    <td class="eredmeny">{{ $_GET['question1'] == $_GET['question1answer'] ? 1 : 0 }}</td>
-                </tr>
-                <tr>
-                    <td>Igaz vagy hamis: Az int és az Int32 azonos adattípusok a C#-ban?</td>
-                    <td>{{ $_GET['question2'] }}</td>
-                    <td>{{ $_GET['question2answer'] }}</td>
-                    <td class="eredmeny">{{ $_GET['question2'] == $_GET['question2answer'] ? 1 : 0 }}</td>
-                </tr>
-                <tr>
-                    <td>Melyik szabályosan deklarált változó a következő példában: string myString?</td>
-                    <td>{{ $_GET['question3'] }}</td>
-                    <td>{{ $_GET['question3answer'] }}</td>
-                    <td class="eredmeny">{{ $_GET['question3'] == $_GET['question3answer'] ? 1 : 0 }}</td>
-                </tr>
-                <tr>
-                    <td>Melyik a C# nyelvben az elsődleges adatkezelő egység?</td>
-                    <td>{{ $_GET['question4'] }}</td>
-                    <td>{{ $_GET['question4answer'] }}</td>
-                    <td class="eredmeny">{{ $_GET['question4'] == $_GET['question4answer'] ? 1 : 0 }}</td>
-                </tr>
-            </tbody>
-        </table>
-        <p id="osszegzes" class="text-end fs-4 text-light" for="osszgezes">Összesen:
-            {{ count($_GET) / 2 }} / </p>
-        <div class="row">
-            <div class="col">
-                <div id="utolsovisszajelzes" class="d-none"> </div>
+        <div class="container">
+            <table id="responsetable" class="table table-dark text-white table-striped mt-5">
+                <thead>
+                    <tr>
+                        <th class="w-50" scope="col">Kérdés:</th>
+                        <th scope="col">Ön válasza:</th>
+                        <th scope="col">Helyes válasz:</th>
+                        <th scope="col">Pontszám:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Melyik utasítás használható arra, hogy egy PHP fájlban kiírjunk egy üzenetet a böngészőbe?</td>
+                        <td>{{ $_GET['question1'] }}</td>
+                        <td>{{ $_GET['question1answer'] }}</td>
+                        <td class="eredmeny">{{ $_GET['question1'] == $_GET['question1answer'] ? 1 : 0 }}</td>
+                    </tr>
+                    <tr>
+                        <td>Igaz vagy hamis: A PHP nyelv használható kliensoldali fejlesztésre?</td>
+                        <td>{{ $_GET['question2'] }}</td>
+                        <td>{{ $_GET['question2answer'] }}</td>
+                        <td class="eredmeny">{{ $_GET['question2'] == $_GET['question2answer'] ? 1 : 0 }}</td>
+                    </tr>
+                    <tr>
+                        <td>Melyik utasítás használható a PHP nyelvben egy fájl beolvasására?</td>
+                        <td>{{ $_GET['question3'] }}</td>
+                        <td>{{ $_GET['question3answer'] }}</td>
+                        <td class="eredmeny">{{ $_GET['question3'] == $_GET['question3answer'] ? 1 : 0 }}</td>
+                    </tr>
+                    <tr>
+                        <td>Melyik szintaxis használható az összefűzésre (concatenation) a PHP nyelvben?</td>
+                        <td>{{ $_GET['question4'] }}</td>
+                        <td>{{ $_GET['question4answer'] }}</td>
+                        <td class="eredmeny">{{ $_GET['question4'] == $_GET['question4answer'] ? 1 : 0 }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p id="osszegzes" class="text-end fs-4 text-light" for="osszgezes">Összesen:
+                {{ count($_GET) / 2 }} / </p>
+            <div class="row">
+                <div class="col">
+                    <div id="utolsovisszajelzes" class="d-none"> </div>
+                </div>
             </div>
         </div>
         </div>
@@ -354,36 +355,19 @@
                 }
             }
             document.getElementById("osszegzes").innerHTML += helyes;
-            
+
             var today = new Date().toISOString().slice(0, 10).replace('T', ' ');
-           
+
             if (helyes <= 2) {
-                var data = {
-                    "title": "php basic",
-                    "start": today,
-                    "end": today,
-                    "backgroundcolor": "yellow"
-                }
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'calendar_store_data');
-                xhr.setRequestHeader('Content-Type', 'application/json');
-                xhr.onload = function() {
-                    if (xhr.status === 200) {
-                        console.log('Data inserted successfully');
-                    } else {
-                        console.error('Error inserting data');
-                    }
-                };
-                xhr.send(JSON.stringify(data));
                 document.getElementById("utolsovisszajelzes").classList.remove("d-none");
                 document.getElementById("utolsovisszajelzes").innerHTML =
-                    "<h4 class='text-danger'>Sájnáljuk de nem sikerült megtanulnod az alapokat kérlek figyelmesen olvasd át mégegyszer és érj el legalább 50% eredményt!<a href='./5' class='text-decoration-underline text-danger '>Probald ujra!</a></h4>";
+                    "<h2 class='text-danger fw-bold bg-dark p-2'>Sájnáljuk de nem sikerült megtanulnod az alapokat kérlek figyelmesen olvasd át mégegyszer és érj el legalább 60% eredményt! <a href='./4?sikerult=false' class='text-decoration-underline text-danger '>Probald ujra!</a></h2>";
             } else {
 
 
                 document.getElementById("utolsovisszajelzes").classList.remove("d-none");
                 document.getElementById("utolsovisszajelzes").innerHTML =
-                    "<h3 class='text-success'>Gratulálunk sikeresen teljesitetted a php basic levelt!<a href='./9' class='text-decoration-underline text-success '>Irány a következő oldal!</a></h3>";
+                    "<h2 class='text-success fw-bold bg-dark p-2'>Gratulálunk sikeresen teljesitetted a php basic levelt!<a href='./9?sikerult=true&elozocourse=4&basecourseid=4&level=1' class='text-decoration-underline text-success '>Irány a következő oldal!</a></h2>";
 
             }
 
@@ -432,8 +416,9 @@
         }
     </script>
     <style>
-        .quiz-title {
-            text-align: center;
+        #nextbutton {
+            padding: 20px;
+            font-size: 0.6cm;
         }
 
         .question {
@@ -471,19 +456,6 @@
             /* Külső margó a szövegek körül */
 
         }
-
-
-
-
-        .checkmark {
-            color: white;
-            padding-left: 20px
-        }
-
-
-
-
-
 
         /* CSS */
         .button-71 {
@@ -532,15 +504,6 @@
             }
         }
 
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px;
-        }
-
-
-
         .intro-section h2 {
             color: #c7a26d;
             border-bottom: 2px solid #c7a26d;
@@ -562,6 +525,14 @@
 
         .example code {
             color: #FFF;
+        }
+
+        .sorcode {
+            background-color: #7d6139;
+            color: #FFF;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
         }
 
         .next-page-button {
