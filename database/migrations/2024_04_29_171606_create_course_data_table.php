@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('course_id');
             $table->string('cim');
-            $table->string('tartalom');
+            $table->longText('tartalom');
             $table->timestamps();
         });
     }

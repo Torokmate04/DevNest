@@ -79,9 +79,13 @@
                     <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                     <div class="col-md-6">
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                            name="password" required autocomplete="new-password">
-
+                        <input onchange="passwordStrenght(this.value);" id="password" type="password"
+                            class="form-control @error('password') is-invalid @enderror" name="password" required
+                            autocomplete="new-password">
+                        <div class="progress d-none" id="progresstoshow" role="progressbar" aria-valuemin="0"
+                            aria-valuemax="100">
+                            <div class="progress-bar" id="progresstochange"></div>
+                        </div>
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -95,8 +99,9 @@
                         class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
 
                     <div class="col-md-6">
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-                            required autocomplete="new-password">
+                        <input onchange="passwordSame(this.value);" id="password-confirm" type="password"
+                            class="form-control" name="password_confirmation" required autocomplete="new-password">
+                        <span id="repeatresponsetext"></span>
                     </div>
                 </div>
 
@@ -137,16 +142,63 @@
                 }
             });
         }
+
+        function passwordStrenght(password) {
+            var upperRegex = /[A-Z]/;
+            var numberRegex = /\d/;
+
+            var div = document.getElementById("progresstoshow");
+            div.classList.remove("d-none");
+            var progressbar = document.getElementById("progresstochange");
+            progressbar.classList.value = "progressbar";
+            if (password.length < 5) {
+                progressbar.classList.add("w-25");
+                progressbar.classList.add("bg-danger");
+            } else if (password.length > 5) {
+                if (password.length >= 8 && upperRegex.test(password) && numberRegex.test(password)) {
+                    progressbar.classList.value = "progressbar";
+                    progressbar.classList.add('w-100');
+                    progressbar.classList.add("bg-success");
+                    return;
+                }
+                if (!upperRegex.test(password)) {
+                    progressbar.classList.add("w-50");
+                    progressbar.classList.add("bg-warning");
+                }
+                if (!numberRegex.test(password)) {
+                    progressbar.classList.add("w-50");
+                    progressbar.classList.add("bg-warning");
+                }
+                progressbar.classList.add("w-50");
+                progressbar.classList.add("bg-warning");
+            }
+
+            var repeatpassword = document.getElementById("password-confirm").value;
+            passwordSame(repeatpassword);
+        }
+
+        function passwordSame(repeatpassword) {
+            var password = document.getElementById('password').value;
+            var text = document.getElementById('repeatresponsetext');
+            text.classList.value = "";
+            if (password === repeatpassword) {
+                text.classList.add("text-success");
+                text.textContent = "Passwords are the same.";
+            } else {
+                text.classList.add("text-danger");
+                text.textContent = "Passwords are NOT the same.";
+            }
+        }
     </script>
     <style>
         /* Adjustments for Bootstrap compatibility */
-       
 
-       
-        .kozepre{
+
+
+        .kozepre {
             margin-top: 20%;
         }
-      
+
 
         .form-control {
             width: 100%;
@@ -160,7 +212,7 @@
 
         .btn-primary {
             width: 100%;
-            
+
             padding: 10px;
             background-color: #c7a26d;
             border: none;
