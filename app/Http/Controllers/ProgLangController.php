@@ -9,6 +9,7 @@ use App\Models\Course;
 
 class ProgLangController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      */

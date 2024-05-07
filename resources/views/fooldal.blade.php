@@ -4,6 +4,7 @@
     use App\Models\Course;
     use App\Models\Types;
     use App\Models\ProgLang;
+    use App\Models\User;
 @endphp
 @section('content')
     <div class="row">
@@ -71,9 +72,12 @@
                     <div class="row my-5"></div>
                 @endif
             @endforeach --}}
-            <h1>Get really good at programming</h1>
-            <p>Develop fluency in 67 programming languages with our unique blend of learning, practice and mentoring.
-                Exercism is fun, effective and 100% free, forever.</p>
+            <h1>Üdvözlünk a Programozás Varázsában!</h1>
+
+<p class="fs-5">Lépj be Te is a digitális mágusok birodalmába, ahol a sorok nem csupán karakterekből állnak, hanem lehetőségek végtelen tárháza rejtőzik bennük.</p>
+
+<p class="fs-5"><strong>Aktuális állapot:</strong><br>
+Örömmel értesítünk, hogy már <span id="studentCount">{{(count(User::all()))}}</span> tanuló csatlakozott hozzánk, akik izgatottan merülnek el a programozás rejtelmeiben.</p>
 
         </div>
         <div class="row mt-5">

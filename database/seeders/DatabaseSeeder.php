@@ -109,28 +109,28 @@ class DatabaseSeeder extends Seeder
             'name' => 'python',
             'description' => 'python leiras',
             'type_id' => 1,
-            'usercount' => 0,
+            'usercount' => 1,
             'course_id' => 3
         ]); 
         ProgLang::factory()->create([
             'name' => 'javascript',
             'description' => 'Javascript leiras',
             'type_id' => 1,
-            'usercount' => 0,
+            'usercount' => 1,
             'course_id' => 7
         ]); 
         ProgLang::factory()->create([
             'name' => 'java',
             'description' => 'Java leiras',
             'type_id' => 1,
-            'usercount' => 0,
+            'usercount' => 1,
             'course_id' => 6
         ]); 
         ProgLang::factory()->create([
             'name' => 'csharp',
             'description' => 'C# leiras',
             'type_id' => 1,
-            'usercount' => 0,
+            'usercount' => 1,
             'course_id' => 5
         ]); 
 
@@ -138,7 +138,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'php',
             'description' => 'PHP leiras',
             'type_id' => 1,
-            'usercount' => 0,
+            'usercount' => 1,
             'course_id' => 4
         ]); 
 

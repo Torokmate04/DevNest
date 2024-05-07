@@ -18,4 +18,6 @@ class ProgLang extends Model
         'usercount',
         'course_id'
     ];
+
+    
 }
